@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Scott County Schools</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<link rel="stylesheet" href="/css/leaflet-search.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<!-- JavaScript -->
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="/js/leaflet-search.js"></script>
+</head>
+<body>
+	<div id="header">
+		<h1>Scott County Schools</h1>
+		<div id="outerform"></div>
+	</div>
+	<div id="map"></div>
+
+	<script>
+		var map = L.map('map').setView([38.317236, -84.564147],13);
+			L.tileLayer('http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/maptile/{mapID}/normal.day/{z}/{x}/{y}/256/png8?app_id={app_id}&app_code={app_code}', {
+				attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
+				subdomains: '1234',
+				mapID: 'newest',
+				app_id: 'Y8m9dK2brESDPGJPdrvs',
+				app_code: 'dq2MYIvjAotR8tHvY8Q_Dg',
+				base: 'base',
+				minZoom: 0,
+				maxZoom: 20
+			}).addTo(map);
+
+		var featuresLayer = new L.GeoJSON.AJAX("/data/schools.geojson", {
+			onEachFeature: function(feature, marker) {
+				marker.bindPopup("<p>Name: " + feature.properties.NAME + "</p>")
+			}
+		});
+			featuresLayer.addTo(map);
+	</script>
+</body>
+</html>
