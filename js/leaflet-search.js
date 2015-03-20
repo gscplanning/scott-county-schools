@@ -777,9 +777,9 @@ var SearchMarker = L.Marker.extend({
 	includes: L.Mixin.Events,
 	
 	options: {
-		radius: 10,
-		weight: 3,
-		color: '#e03',
+		radius: 16,
+		weight: 2.5,
+		color: 'rgba(40,60,90,0.4)',
 		stroke: true,
 		fill: false,
 		title: '',

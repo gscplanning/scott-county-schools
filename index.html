@@ -31,6 +31,12 @@
 			maxZoom: 20
 		});
 
+		//marker styling
+		var mortarBoard =L.icon({
+			iconUrl: '/img/mortar-red.svg',
+			iconSize: [32, 32],
+			iconAnchor: [16,16]
+		});
 		// feature layer
 		$.getJSON("data/schools.geojson", function(data) {
 			featureLayer = new L.geoJson(data, {
@@ -49,6 +55,9 @@
 						"</tr>" +
 						"</table>"
 						);
+				},
+				pointToLayer: function (feature, latlng) {
+					return L.marker(latlng, {icon: mortarBoard});
 				}
 			});
 		// fit map to feature layer bounds
