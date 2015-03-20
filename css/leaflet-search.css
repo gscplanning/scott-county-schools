@@ -23,8 +23,8 @@
 	background: #fff;
 	border:1px solid #666;
 	border-radius:2px;
-	height:18px;
-	padding:0 18px 0 2px;
+	height: 20px;
+	padding:0 18px 0 6px;
 	margin:3px 0 3px 3px;
 }
 .leaflet-control-search.search-load .search-input {
