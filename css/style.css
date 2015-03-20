@@ -6,6 +6,7 @@ body, html {
 
 #header {
 	height:80px;
+	padding-bottom: 40px;
 }
 
 h1 {
@@ -27,5 +28,38 @@ h1 {
 }
 
 td:first-child {
+	font-weight: bold;
+}
+
+/*search box style*/
+#outerform {
+	background: rgba(255,255,255,0.5);
+	border-radius:2px;
+	border:0px solid rgba(255,255,255,0.1);
+	/*box-shadow: 0 0 8px #999;	*/
+	margin-bottom: 10px;
+        	margin-left: auto;
+	margin-right: auto;
+        	margin-top: 20px;
+	padding: 2px;
+	width: 330px;
+	height: 26px;
+}
+.search-input {
+	width: 300px;
+	font-family: 'Open Sans', sans-serif;
+
+}
+.search-tooltip {
+	width: 400px;
+}
+.leaflet-control-search .search-cancel {
+	position: static;
+	float: left;
+	margin-left: -22px;
+   }
+
+.search-tip {
+	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 }

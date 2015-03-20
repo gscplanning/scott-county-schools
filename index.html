@@ -18,6 +18,8 @@
 	<div id="map"></div>
 
 	<script>
+		var featureLayer
+		// basemap
 		var base = L.tileLayer('http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/maptile/{mapID}/normal.day/{z}/{x}/{y}/256/png8?app_id={app_id}&app_code={app_code}', {
 			attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
 			subdomains: '1234',
@@ -29,8 +31,9 @@
 			maxZoom: 20
 		});
 
+		// feature layer
 		$.getJSON("data/schools.geojson", function(data) {
-			var geojson = L.geoJson(data, {
+			featureLayer = new L.geoJson(data, {
 				onEachFeature: function (feature, layer) {
 					layer.bindPopup(
 						"<h4>" + feature.properties.SCHOOL + "</h4>" +
@@ -48,9 +51,34 @@
 						);
 				}
 			});
-		var map = L.map('map').fitBounds(geojson.getBounds());
+		// fit map to feature layer bounds
+		var map = L.map('map').fitBounds(featureLayer.getBounds());
+		// add basemap
 		base.addTo(map);
-		geojson.addTo(map);
+		// add feature layer
+		featureLayer.addTo(map);
+
+		var searchControl = new L.Control.Search({
+			wrapper: 'outerform',
+			collapsed: false,
+			layer: featureLayer,
+			propertyName: 'SCHOOL',
+			circleLocation:true
+		});
+		 searchControl.on('search_locationfound', function(e) {
+			e.layer.setStyle({
+				fillColor: '#3f0',
+				color: '#0f0'
+			});
+			if(e.layer._popup)
+				e.layer.openPopup();
+		}).on('search', function(e) {
+			featureLayer.eachLayer(function(layer) {
+				featureLayer.resetStyle(layer);
+			});	
+       		});
+	     	map.addControl( searchControl );
+		// This is where that jQuery  getJSON thing ends. Apparently to 
 		});
 	</script>
 </body>
