@@ -3,12 +3,12 @@
 	<title>Scott County Schools</title>
 	<!-- CSS -->
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-	<link rel="stylesheet" href="/css/leaflet-search.css">
-	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="./css/leaflet-search.css">
+	<link rel="stylesheet" href="./css/style.css">
 	<!-- JavaScript -->
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-	<script src="/js/leaflet-search.js"></script>
+	<script src="./js/leaflet-search.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -33,12 +33,12 @@
 
 		//marker styling
 		var mortarBoard =L.icon({
-			iconUrl: '/img/mortar-red.svg',
+			iconUrl: './img/mortar-red.svg',
 			iconSize: [32, 32],
 			iconAnchor: [16,16]
 		});
 		// feature layer
-		$.getJSON("data/schools.geojson", function(data) {
+		$.getJSON("./data/schools.geojson", function(data) {
 			featureLayer = new L.geoJson(data, {
 				onEachFeature: function (feature, layer) {
 					layer.bindPopup(
