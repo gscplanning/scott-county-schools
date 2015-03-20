@@ -19,3 +19,13 @@ h1 {
 	margin-right: auto;
 	float: center;
 }
+
+.leaflet-popup-content, .leaflet-popup-content table {
+	color: black;
+	font-size: 1em;
+	font-family: 'Open Sans', sans-serif;
+}
+
+td:first-child {
+	font-weight: bold;
+}
